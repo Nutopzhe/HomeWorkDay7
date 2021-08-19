@@ -10,6 +10,16 @@ public class Main {
             System.out.println("Введите первую цифру, операцию, вторую цифру через пробел!");
 
             inputString = scanner.nextLine();
+
+            if (inputString.equalsIgnoreCase("help")) {
+                System.out.println("Возможные операции:\n\tплюс\n\tминус\n\tумножить\n\tразделить\n" +
+                        "Для выхода из программы введите:\n\texit");
+            }
+
+            if (inputString.equalsIgnoreCase("exit")) {
+                break;
+            }
+
             String[] arrayInputString = inputString.split("\\s");
 
             if (arrayInputString.length != 3) {
@@ -51,6 +61,9 @@ public class Main {
                                 arrayInputString[2]));
                     } catch (NumberFormatException e) {
                         System.err.println("Неверный формат цифр!");
+                        e.printStackTrace();
+                    } catch (ArithmeticException e) {
+                        System.err.println("Деление на 0 запрещено!");
                         e.printStackTrace();
                     }
                     break;
